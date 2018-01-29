@@ -1,0 +1,63 @@
+New Volunteer Code:
+
+public void addBE(String fn, String ln, String mn, String address, String cit, String stat,String zip, String school, String gradyear,String phone) {
+        ln=ln.toUpperCase();
+        mn=mn.toUpperCase();
+        fn=fn.toUpperCase();
+        String ret= "Name: "+ln+", "+fn+" "+mn+".\t";
+        ret+="School: "+school+"\t";
+        ret+="Graduating Year: "+gradyear+"\t";
+        ret+=address+", "+cit+", "+stat+" "+zip+"\t";
+        ret+="Phone Number: "+phone;
+        String fileName="VolunteerList.txt";
+    	Path f=Paths.get(fileName);
+        try {
+        //tries to create the file, if fails OR passes, the writer method is ran.
+	Files.createFile(f);
+        System.out.println("File was created");
+        writer(ret,fileName);
+        
+        }
+        catch(FileAlreadyExistsException a) {
+            writer(ret,fileName);
+        }
+        catch(IOException b) {}
+          
+    }
+    
+    public void writer (String stringToWrite,String nameOfFile) {
+         File original= new File(nameOfFile);
+         int lineNum=1;
+         try {
+         Scanner lines= new Scanner(original);
+         while(lines.hasNextLine()) {
+             lineNum++;
+             lines.nextLine();
+         }
+         }
+         catch(Exception notFound) {}
+         File temp= new File("temp"+nameOfFile);
+         FileReaders f= new FileReaders();
+         f.copy(original,temp,lineNum+"\t"+stringToWrite);
+         f.copy(temp,original);
+       }
+    ----------------------------------------------------------------------------------------------------------------------
+	
+	Lottery Controller Code:
+	
+	
+	
+	public void confirm (ActionEvent event) throws IOException {
+        String school = (String) SCHOOLS.getValue();
+        String year = YEAR.getText();
+        school=school.replace("\t","");
+        System.out.println(school+""+year);
+        int input = JOptionPane.showOptionDialog(null, "Are you sure you want to draw for " + school + " graduating class of "+year+"?\nClick OK to continue.",
+                "Message", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+        if (input == JOptionPane.OK_OPTION) {
+            lottery l= new lottery();
+            l.buildEntries(year+school+".txt");
+            openINFO(event);
+        }
+		
+		----------------------------------------------------------------

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scholarship.NEWVOLUNTEERController">
+   <children>
+      <ImageView fitHeight="119.0" fitWidth="271.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@LOGO.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="14.0" layoutY="136.0" text="First Name: " />
+      <TextField fx:id="FIRST" layoutX="77.0" layoutY="132.0" />
+      <TextField fx:id="LAST" layoutX="308.0" layoutY="132.0" prefHeight="25.0" prefWidth="179.0" />
+      <Label layoutX="246.0" layoutY="136.0" text="Last Name: " />
+      <Label layoutX="501.0" layoutY="136.0" text="M.I: " />
+      <TextField fx:id="MI" layoutX="524.0" layoutY="132.0" prefHeight="25.0" prefWidth="40.0" />
+      <Label layoutX="14.0" layoutY="183.0" text="Address: " />
+      <Label layoutX="14.0" layoutY="229.0" text="City: " />
+      <TextField fx:id="ADDRESS" layoutX="63.0" layoutY="179.0" prefHeight="25.0" prefWidth="503.0" />
+      <TextField fx:id="CITY" layoutX="41.0" layoutY="225.0" prefHeight="25.0" prefWidth="213.0" />
+      <Label layoutX="269.0" layoutY="229.0" text="State: " />
+      <TextField fx:id="STATE" layoutX="300.0" layoutY="225.0" prefHeight="25.0" prefWidth="49.0" />
+      <Label layoutX="362.0" layoutY="229.0" text="Zip Code: " />
+      <TextField fx:id="ZIP" layoutX="416.0" layoutY="225.0" />
+      <Label layoutX="11.0" layoutY="273.0" text="School: " />
+      <Label layoutX="341.0" layoutY="273.0" text="Graduation Year: " />
+      <TextField fx:id="GRADYEAR" layoutX="433.0" layoutY="269.0" prefHeight="25.0" prefWidth="129.0" />
+      <Label layoutX="315.0" layoutY="40.0" text="New Volunteer" textFill="RED">
+         <font>
+            <Font name="Berlin Sans FB" size="41.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="SCHOOLS" layoutX="53.0" layoutY="269.0" prefHeight="25.0" prefWidth="256.0" style="-fx-background-color: #F0F0F0;" />
+      <Button fx:id="BACK" layoutX="32.0" layoutY="339.0" mnemonicParsing="false" onAction="#openHOME" style="-fx-background-color: RED;" text="Back" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="ADD" layoutX="499.0" layoutY="339.0" mnemonicParsing="false" onAction="#addVolunteer" style="-fx-background-color: #00ee00;" text="Add">
+         <font>
+            <Font name="Berlin Sans FB" size="16.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
