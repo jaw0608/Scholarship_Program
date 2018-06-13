@@ -59,6 +59,13 @@ public class HOMEController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+    public void openSEARCH (ActionEvent event) throws IOException {
+        Stage stage = (Stage) SEARCH.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("SearchVolunteer.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

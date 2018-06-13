@@ -9,6 +9,7 @@ import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class FileReaders {
@@ -29,7 +30,7 @@ public class FileReaders {
         File t= new File(fileName);
         PrintWriter p=new PrintWriter(t);
         p.print(fileName);
-        addHours(hours,name,fileName);
+        addHours(hours/2,name,fileName);
         }
         catch(FileAlreadyExistsException a) {
             addHours(hours,name,fileName);
@@ -38,7 +39,7 @@ public class FileReaders {
     }
     
     //pulls hours, volunteers name, and previously created filename
-    public boolean addHours(int hours, String name,String fileName) {
+    public int addHours(int hours, String name,String fileName) {
     //creates new file and scanner using the filename
     File file = new File(fileName);
     System.out.println("In ran hours");
@@ -128,7 +129,7 @@ public class FileReaders {
     }
     }
     catch(Exception possiblyParseIntError){System.out.println("Parse int error");}
-    return true;
+    return totalHours;
 }
     //f1 is to be copied to f2
     public void copy (File f1,File f2) {
@@ -198,7 +199,7 @@ public class FileReaders {
     
     public String [] search(String firstName, String lastName) {
         File g= new File("VolunteerList.txt");
-        String [] info= new String[4];
+        String [] info= new String[6];
         try {
         Scanner readFromFile= new Scanner(g);
         firstName=firstName.toUpperCase();
@@ -214,7 +215,8 @@ public class FileReaders {
             System.out.println("Read in line");
             if (line.indexOf(firstName)>=0&&line.indexOf(lastName)>=0) {
                System.out.println("Found name");
-               info[3]=line;
+               info[3]=line.substring(6,line.indexOf("School"));
+          
                 if (line.contains(".")) {
                    System.out.println("Found middle name");
                     info[2]=""+line.charAt(line.indexOf(".")-1);
@@ -227,8 +229,11 @@ public class FileReaders {
                 school=line.substring(0,line.indexOf("\t"));
                 line=line.substring(line.indexOf("Year: ")+6);
                 year=line.substring(0,line.indexOf("\t"));
+                line = line.substring(line.indexOf("\t")+1);
+                info[5]=line;
                 info[0]=year;
                 info[1]=school;
+                System.out.println(Arrays.toString(info));
                 return info;
             }
             
@@ -241,6 +246,7 @@ public class FileReaders {
         info[2]="NOTFOUND";
         info[3]="NOTFOUND";
         info[4]="NOTFOUND";
+        info[5]="NOTFOUND";
         return info;}
               }
         catch(FileNotFoundException notgonnahappen) {}
@@ -249,6 +255,7 @@ public class FileReaders {
         info[2]="NOTFOUND";
         info[3]="NOTFOUND";
         info[4]="NOTFOUND";
+        info[5]="NOTFOUND";
         return info;
     }
 

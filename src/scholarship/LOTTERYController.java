@@ -55,9 +55,11 @@ public class LOTTERYController implements Initializable {
     public void openINFO (ActionEvent event) throws IOException {
         Stage stage = (Stage) BACK.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("VOLUNTEERINFORMATION.fxml"));
+        VOLUNTEERINFORMATIONController x = new VOLUNTEERINFORMATIONController();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        
     }
 public void confirm (ActionEvent event) throws IOException {
         String school = (String) SCHOOLS.getValue();
@@ -68,14 +70,26 @@ public void confirm (ActionEvent event) throws IOException {
                 "Message", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
         if (input == JOptionPane.OK_OPTION) {
             lottery l= new lottery();
-            l.buildEntries(year+school+".txt");
+            String[] winner = l.buildEntries(year+school+".txt");
+            if (winner[0]!="NOFILE") {
+            winnerInfo[0]=winner[3];
+            winnerInfo[1]= winner[0];
+            winnerInfo[2]= winner[1];
+            winnerInfo[3]=winner[6];
+            winnerInfo[4]=winner[5];
             openINFO(event);
         }
+            else
+                 JOptionPane.showMessageDialog(null, "No entries found for this school and year");
+        }
     }
+public String[] getWinner() {
+    return winnerInfo;
+}
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         SCHOOLS.getItems().addAll("\t\tMILLERPLACE\t\t", "\t\tMOUNTSINAI\t\t", "\t\tROCKYPOINT\t\t", "\t\tSHOREHAM\t\t");
     }    
-    
+    public static String[] winnerInfo = new String[5];
 }

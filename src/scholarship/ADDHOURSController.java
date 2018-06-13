@@ -67,7 +67,7 @@ public class ADDHOURSController implements Initializable {
                     String[] info=fr.search(first,last);
                     if (info[0].equals("NOTFOUND")) {
                         System.out.println("Name not found");
-                        //Add J-Option Pane
+                        JOptionPane.showMessageDialog(null, "Volunteer not found."); 
                     }
                     else {
                         if (!info[2].equals("")) {

@@ -26,7 +26,7 @@
             <Font name="Berlin Sans FB" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="SEARCH" layoutX="105.0" layoutY="312.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="148.0" style="-fx-background-color: YELLOW;" text="Search Volunteer">
+      <Button fx:id="SEARCH" layoutX="105.0" layoutY="312.0" mnemonicParsing="false" onAction="#openSEARCH" prefHeight="26.0" prefWidth="148.0" style="-fx-background-color: YELLOW;" text="Search Volunteer">
          <font>
             <Font name="Berlin Sans FB" size="14.0" />
          </font>

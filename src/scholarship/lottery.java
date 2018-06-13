@@ -20,7 +20,7 @@ public class lottery {
     
     
     //function that reads entry from file, and 
-    public void buildEntries(String a) {
+    public String[] buildEntries(String a) {
     try {
     File file = new File(a);
     Scanner input = new Scanner(file);
@@ -36,14 +36,50 @@ public class lottery {
         System.out.println("Added: "+name);
     }
 }
-System.out.println(drawBE(entryList));
+    return drawBE(entryList,a);
     }
-    catch(FileNotFoundException b) {System.out.println("Error, file not found");}
+    catch(FileNotFoundException b) {
+        System.out.println("Error, no entries"); 
+        String ret[] = new String[6];
+        ret[0]="NOFILE";
+        return ret;
     }
-public String drawBE (ArrayList<String> a) {
+    }
+public String[] drawBE (ArrayList<String> a, String fileName) {
        double winner = Math.random();
        winner=winner*a.size();
        
-    return "And the winner is: "+a.get((int)winner);
+    String name=a.get((int)winner);
+    String keepName = name;
+    String fn = name.substring(0, name.indexOf(" "));
+    name = name.substring(0, name.indexOf(" "));
+    int mnIndex = name.indexOf("\t");
+    int lnIndex = name.lastIndexOf("\t");
+    String ln ="";
+    String mn= "";
+    
+    if (mnIndex==lnIndex) {
+        ln = name.substring(0, lnIndex);
+    }
+    else {
+        ln =name.substring(lnIndex);
+    }
+    FileReaders s = new FileReaders();
+    String[] ret = new String[7];
+    fn= fn.replace(",","");
+    ln= ln.replace(",","");
+    fn= fn.replace("\t","");
+    ln= ln.replace("\t","");
+    System.out.println(fn+" "+ln);
+    String[] search = s.search(fn,ln);
+    
+    ret[0]=search[0];
+    ret[1]= search[1];
+    ret[2]= search[2];
+    ret[3]= search[3];
+    ret[4]= search[4];
+    ret[5] = search[5];
+    ret[6] = ""+s.addHours(0, keepName, fileName);
+    return ret;
     }
 }

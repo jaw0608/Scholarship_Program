@@ -122,27 +122,35 @@ public class NEWVOLUNTEERController implements Initializable {
         else return true;
     }
 public void addBE(String fn, String ln, String mn, String address, String cit, String stat,String zip, String school, String gradyear) {
+        FileReaders search = new FileReaders();
         ln=ln.toUpperCase();
         mn=mn.toUpperCase();
         fn=fn.toUpperCase();
-        String ret= "Name: "+ln+", "+fn+" "+mn+".\t";
-        ret+="School: "+school+"\t";
-        ret+="Graduating Year: "+gradyear+"\t";
-        ret+=address+", "+cit+", "+stat+" "+zip+"\t";
-        String fileName="VolunteerList.txt";
-    	Path f=Paths.get(fileName);
-        try {
-        //tries to create the file, if fails OR passes, the writer method is ran.
-	Files.createFile(f);
-        System.out.println("File was created");
-        writer(ret,fileName);
-        
-        }
-        catch(FileAlreadyExistsException a) {
+        String[] isFound = search.search(fn, ln);
+        if (isFound[3]=="NOTFOUND") {
+            String ret= "Name: "+ln+", "+fn+" "+mn+".\t";
+            ret+="School: "+school+"\t";
+            ret+="Graduating Year: "+gradyear+"\t";
+            ret+=address+", "+cit+", "+stat+" "+zip+"\t";
+            String fileName="VolunteerList.txt";
+            Path f=Paths.get(fileName);
+            try {
+            //tries to create the file, if fails OR passes, the writer method is ran.
+            Files.createFile(f);
+            System.out.println("File was created");
             writer(ret,fileName);
+        
+            }
+            catch(FileAlreadyExistsException a) {
+                writer(ret,fileName);
+            }
+            catch(IOException b) {}
+            }
+        else {
+             JOptionPane.showOptionDialog(null, "ERROR: Would you like to view their profile?",
+             "ERROR", JOptionPane.OK_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+             
         }
-        catch(IOException b) {}
-          
     }
     
     public void writer (String stringToWrite,String nameOfFile) {

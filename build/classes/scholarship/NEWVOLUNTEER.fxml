@@ -29,6 +29,7 @@
       <TextField fx:id="STATE" layoutX="300.0" layoutY="225.0" prefHeight="25.0" prefWidth="49.0" />
       <Label layoutX="362.0" layoutY="229.0" text="Zip Code: " />
       <TextField fx:id="ZIP" layoutX="416.0" layoutY="225.0" />
+      <ChoiceBox fx:id="SCHOOLS" layoutX="53.0" layoutY="269.0" prefHeight="25.0" prefWidth="256.0" style="-fx-background-color: #F0F0F0;" />
       <Label layoutX="11.0" layoutY="273.0" text="School: " />
       <Label layoutX="341.0" layoutY="273.0" text="Graduation Year: " />
       <TextField fx:id="GRADYEAR" layoutX="433.0" layoutY="269.0" prefHeight="25.0" prefWidth="129.0" />
@@ -37,7 +38,6 @@
             <Font name="Berlin Sans FB" size="41.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="SCHOOLS" layoutX="53.0" layoutY="269.0" prefHeight="25.0" prefWidth="256.0" style="-fx-background-color: #F0F0F0;" />
       <Button fx:id="BACK" layoutX="32.0" layoutY="339.0" mnemonicParsing="false" onAction="#openHOME" style="-fx-background-color: RED;" text="Back" textFill="WHITE">
          <font>
             <Font name="Berlin Sans FB" size="16.0" />
